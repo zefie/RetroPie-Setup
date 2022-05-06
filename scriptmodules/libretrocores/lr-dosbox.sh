@@ -30,6 +30,7 @@ function build_lr-dosbox() {
             params+="WITH_DYNAREC=arm"
         fi
     fi
+    CXXFLAGS="$CXXFLAGS -std=c++14"
     make clean
     make "${params[@]}"
     md_ret_require="$md_build/dosbox_libretro.so"
