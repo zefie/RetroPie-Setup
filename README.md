@@ -1,6 +1,10 @@
 RetroPie-Setup
 ==============
 
+zefie edition
+-------------
+Tested on xubuntu 22.04 LTS amd64 (Jammy)
+
 General Usage
 -------------
 
