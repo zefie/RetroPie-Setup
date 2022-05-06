@@ -80,6 +80,7 @@ function update_shaders_retroarch() {
     isPlatform "rpi" && branch="rpi"
     # remove if not git repository for fresh checkout
     [[ ! -d "$dir/.git" ]] && rm -rf "$dir"
+    git config --global --add safe.directory "$dir"
     gitPullOrClone "$dir" https://github.com/RetroPie/common-shaders.git "$branch"
     chown -R $user:$user "$dir"
 }
@@ -88,6 +89,7 @@ function update_overlays_retroarch() {
     local dir="$configdir/all/retroarch/overlay"
     # remove if not a git repository for fresh checkout
     [[ ! -d "$dir/.git" ]] && rm -rf "$dir"
+    git config --global --add safe.directory "$dir"
     gitPullOrClone "$dir" https://github.com/libretro/common-overlays.git
     chown -R $user:$user "$dir"
 }
@@ -114,6 +116,7 @@ function install_minimal_assets_retroarch() {
 }
 
 function _package_minimal_assets_retroarch() {
+    git config --global --add safe.directory "$md_build/assets"
     gitPullOrClone "$md_build/assets" https://github.com/libretro/retroarch-assets.git
     mkdir -p "$__tmpdir/archives"
     local archive="$__tmpdir/archives/retroarch-minimal-assets.tar.gz"
